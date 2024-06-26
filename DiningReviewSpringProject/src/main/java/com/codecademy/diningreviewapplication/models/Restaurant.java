@@ -1,7 +1,9 @@
 package com.codecademy.diningreviewapplication.models;
 
 import jakarta.persistence.*;
+
 import java.math.BigDecimal;
+import java.util.Set;
 
 @Entity
 public class Restaurant {
@@ -25,6 +27,13 @@ public class Restaurant {
     @Column(precision = 3, scale = 2)
     private BigDecimal overallScore;
 
+
+    @Column(nullable = false)
+    private String zipcode;
+
+    @OneToMany(mappedBy = "restaurant", cascade = CascadeType.ALL)
+    private Set<DiningReview> reviews;
+    
     // Getters and Setters
 
     public Long getId() {
@@ -81,6 +90,22 @@ public class Restaurant {
 
     public void setOverallScore(BigDecimal overallScore) {
         this.overallScore = overallScore;
+    }
+
+    public String getZipcode() {
+        return zipcode;
+    }
+
+    public void setZipcode(String zipcode) {
+        this.zipcode = zipcode;
+    }
+
+    public Set<DiningReview> getReviews() {
+        return reviews;
+    }
+
+    public void setReviews(Set<DiningReview> reviews) {
+        this.reviews = reviews;
     }
 }
 
