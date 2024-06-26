@@ -1,0 +1,30 @@
+2024-06-26 10:09:25.079594-04:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "COUNTRIES" not found (this database is empty); SQL statement:
+SELECT * FROM countries [42104-224]
+2024-06-26 10:09:55.932094-04:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "COUNTRIES" already exists; SQL statement:
+CREATE TABLE countries (
+    id INT PRIMARY KEY,
+    name VARCHAR(50)
+) [42101-224]
+2024-06-26 10:10:15.766072-04:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "COUNTRIES" already exists; SQL statement:
+CREATE TABLE countries (
+    id INT PRIMARY KEY,
+    name VARCHAR(50)
+) [42101-224]
+2024-06-26 10:11:17.306235-04:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "DELETE [*]TABLE countries"; expected "identifier"; SQL statement:
+DELETE TABLE countries [42001-224]
+2024-06-26 16:11:19.157562-04:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SHOW TABLES\000d\000a[*]DROP TABLE countries"; SQL statement:
+SHOW TABLES
+DROP TABLE countries [42000-224]
+2024-06-26 16:11:28.754193-04:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SHOW TABLES\000d\000a[*]DROP TABLE COUNTRIES"; SQL statement:
+SHOW TABLES
+DROP TABLE COUNTRIES [42000-224]
+2024-06-26 16:11:31.598401-04:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SHOW TABLES\000d\000a[*]DROP TABLE COUNTRIES"; SQL statement:
+SHOW TABLES
+DROP TABLE COUNTRIES [42000-224]
