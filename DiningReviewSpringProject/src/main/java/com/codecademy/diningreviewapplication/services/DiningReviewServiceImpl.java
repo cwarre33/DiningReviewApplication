@@ -3,12 +3,16 @@ package com.codecademy.diningreviewapplication.services;
 import com.codecademy.diningreviewapplication.models.DiningReview;
 import com.codecademy.diningreviewapplication.models.ReviewStatus;
 import com.codecademy.diningreviewapplication.repositories.DiningReviewRepository;
+
+import jakarta.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
+@Transactional
 public class DiningReviewServiceImpl implements DiningReviewService {
 
     private final DiningReviewRepository diningReviewRepository;
@@ -21,6 +25,7 @@ public class DiningReviewServiceImpl implements DiningReviewService {
     @Override
     public DiningReview submitDiningReview(DiningReview diningReview) {
         diningReview.setStatus(ReviewStatus.PENDING); // Initial status when submitted
+        diningReview.setRestaurant(diningReview.getRestaurant());
         return diningReviewRepository.save(diningReview);
     }
 
@@ -30,21 +35,23 @@ public class DiningReviewServiceImpl implements DiningReviewService {
     }
 
     @Override
-    public DiningReview approveDiningReview(Long reviewId) {
+    public boolean approveDiningReview(Long reviewId) {
         DiningReview diningReview = diningReviewRepository.findById(reviewId)
                 .orElseThrow(() -> new IllegalArgumentException("Dining review not found: " + reviewId));
 
         diningReview.setStatus(ReviewStatus.ACCEPTED);
-        return diningReviewRepository.save(diningReview);
+        diningReviewRepository.save(diningReview);
+        return true;
     }
 
     @Override
-    public DiningReview rejectDiningReview(Long reviewId) {
+    public boolean rejectDiningReview(Long reviewId) {
         DiningReview diningReview = diningReviewRepository.findById(reviewId)
                 .orElseThrow(() -> new IllegalArgumentException("Dining review not found: " + reviewId));
 
         diningReview.setStatus(ReviewStatus.REJECTED);
-        return diningReviewRepository.save(diningReview);
+        diningReviewRepository.save(diningReview);
+        return false;
     }
 
     @Override

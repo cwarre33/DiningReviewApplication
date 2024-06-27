@@ -3,6 +3,8 @@ package com.codecademy.diningreviewapplication.services;
 import com.codecademy.diningreviewapplication.models.User;
 import com.codecademy.diningreviewapplication.repositories.UserRepository;
 
+import jakarta.transaction.Transactional;
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +17,7 @@ public class UserServiceImpl implements UserService {
     private UserRepository userRepository;
 
     @Override
+    @Transactional
     public User createUser(User user) {
         return userRepository.save(user);
     }
@@ -25,6 +28,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    @Transactional
     public User updateUserProfile(String displayName, User user) {
         User existingUser = userRepository.findByDisplayName(displayName);
         if (existingUser != null) {
