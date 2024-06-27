@@ -1,0 +1,11 @@
+package com.codecademy.diningreviewapplication.services;
+
+import com.codecademy.diningreviewapplication.models.Restaurant;
+
+import java.util.List;
+
+public interface RestaurantService {
+    Restaurant submitRestaurant(Restaurant restaurant);
+    Restaurant findById(Long id);
+    List<Restaurant> findByZipCodeAndAllergyScores(String zipCode, String allergy);
+}

@@ -16,4 +16,6 @@ public interface UserRepository extends JpaRepository<User, Long> {
     // Scenario 3: Fetch user profile by display name
     User findByDisplayNameIgnoreCase(String displayName);
 
+    boolean existsByDisplayName(String displayName);
+
 }
