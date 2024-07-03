@@ -18,5 +18,4 @@ public interface RestaurantRepository extends JpaRepository<Restaurant, Long> {
 
     // Scenario 11: Fetch restaurants by zip code with user-submitted scores for a given allergy, sorted descending
     //List<Restaurant> findByAddressAndReviews_User_AllergyScoreIsNotNullOrderByReviews_User_AllergyScoreDesc(String address);
-
 }
